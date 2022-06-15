@@ -1,25 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import Profile from './components/Profile';
+import Login from './components/Login';
+import ChangeColor from './components/ChangeColor';
+import { useSelector } from 'react-redux';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	// a hook to access the redux store's state
+	const themeColor = useSelector(state => state.theme.value);
+	console.log(themeColor);
+
+	return (
+		<div className="App" style={{ backgroundColor: themeColor }}>
+			<Profile />
+			<Login />
+			<ChangeColor />
+		</div>
+	);
 }
 
 export default App;
+
